@@ -1,0 +1,17 @@
+# container:
+#   image: python:3.8
+
+# check_task:
+#   node_modules_cache:
+#     folder: node_modules
+#     fingerprint_script: cat yarn.lock
+#     populate_script: yarn install
+#   test_script: yarn test
+task:
+    # Basic metadata:
+    name: test1
+    only_if: Always run
+
+    # The build machine:
+    windows_container:
+        image: cirrusci/windowsservercore:2019
