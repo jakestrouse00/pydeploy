@@ -8,10 +8,16 @@ blocks:
   - name: Test
     task:
       jobs:
-        - name: pytest
+        - name: install deps
           commands:
             - sem-version python 3.8
             - checkout
             - python -m pip install --upgrade pip
             - python -m pip install --upgrade cx_Freeze
-            - python main.py
+        - name: move files
+          commands:
+            - cp src/main.py windows/
+        - name: run build
+          commands:
+            - cd windows
+            - python setup.py build
